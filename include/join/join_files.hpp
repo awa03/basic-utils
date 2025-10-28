@@ -23,6 +23,11 @@ inline std::string get_all_file_contents(flags::Flags& parsed_flags){
     open_file.close();
 
     contents += buff.str();
+
+    if(parsed_flags.verbose){
+      std::cout << "Added: " << file << "\n";
+      std::cout << "\nContents: " << buff.str() << "\n";
+    }
   }
   return contents;
 }

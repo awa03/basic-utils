@@ -8,6 +8,7 @@ namespace flags {
 
 struct Flags {
   bool help = false;
+  bool help_two = false;
   bool verbose = false;
   bool join = false;
   bool add_trash = false;

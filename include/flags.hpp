@@ -8,7 +8,7 @@
 #include "opts/help.hpp"
 #include "join/join_files.hpp"
 #include "structs/_flags.hpp"
- 
+#include "trash/init.hpp"
 
 namespace flags {
 
@@ -55,23 +55,35 @@ inline Flags parse_flags(int argc, char** argv) {
 }
 
 inline void handle_flags(Flags& parsed_flags) {
+  // Refactor if more pages needed
   if (parsed_flags.help) {
     opts::render_help_menu();
   } 
+
   if (parsed_flags.join){
+
     // handle no files specified
     if(parsed_flags.inputs.size() == 0) {
-      std::cout << "Input Files not specified...\n";
-      std::cout << "\t-i, --input | Specify Input Files\n";
+      opts::input_help_menu();
+      return; 
+    }
+    else if(parsed_flags.output.empty()) {
+      opts::output_help_menu();
+      return;
     }
 
-    if(parsed_flags.output.empty()) {
-      std::cout << "Output Files not specified...\n";
-      std::cout << "\t-o, --output | Specify Output Files\n";
+    // run operation
+    join::join_files(parsed_flags); 
+  }
+  
+  if(parsed_flags.add_trash){
+
+    if(parsed_flags.inputs.size() == 0) {
+      opts::input_help_menu();   
+      return;
     }
-    else {
-      join::join_files(parsed_flags); 
-    }
+
+    trash::handle_trash(parsed_flags);
   }
 
 }

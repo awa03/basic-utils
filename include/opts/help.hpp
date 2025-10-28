@@ -24,6 +24,20 @@ namespace opts {
     std::cout << "\t-j, --join\t| Join Files Together\n"; 
     std::cout << "\t-o, --output\t| Specify Output File\n"; 
     std::cout << "\t-i, --input\t| Add Input Strings\n"; 
+
+    std::cout << "Important -------------------------------------------------\n";
+    std::cout << "Note that individual programs will only evaluate relevant\nflags. See help2 (h2) to view more information\n"; 
+  }
+
+
+  inline void input_help_menu(){
+      std::cout << "Input Files not specified...\n";
+      std::cout << "\t-i, --input | Specify Input Files\n";
+  }
+
+  inline void output_help_menu(){
+    std::cout << "Output Files not specified...\n";
+    std::cout << "\t-o, --output | Specify Output Files\n";
   }
 }
 #endif
