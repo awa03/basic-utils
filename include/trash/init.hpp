@@ -8,7 +8,6 @@
 #include "structs/trash/_settings.hpp"
 #include "trash/settings.hpp"
 #include "trash/file_ops.hpp"
-#include "trash/dir_ops.hpp"
 
 namespace trash{
 
@@ -16,6 +15,7 @@ namespace trash{
 
 
     /* PLAN ---------------------------------------------------------------
+     * also make sure to check if directory here. idk how im gonna squeeze that in a nice format but
      * curr_setting = get_curr_settings();
      * if(!curr_setting.trash_path.exists()) // check if set doesnt exists
      *    print "path doesnt exist" 
@@ -54,13 +54,7 @@ namespace trash{
         continue; // goto next path
       }        
 
-      int type = is_dir(e);
-      if(type == DIR){
-        // add_dir_to_trash(settings, e, parsed_flags.verbose); 
-      }
-      else if(type == FILE){
-        add_file_to_trash(settings, e, parsed_flags.verbose); 
-      }
+      add_to_trash(settings, e, parsed_flags.verbose); 
     }
   }
 }

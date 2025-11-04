@@ -5,6 +5,9 @@
 #include <unordered_map>
 #include <ctime>
 #include "structs/logger/_settings.hpp"
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 namespace logger {
 
@@ -39,14 +42,6 @@ public:
     // settings = get_current_settings();
   }
   
-  // Return is new error value (int exp)
-  int add_err_type(){
-    return 0;
-  } 
-
-  void remove_err_type(){
-  }
-
   ErrCls get_err(){
     return classification.get_err();
   }
@@ -58,6 +53,14 @@ public:
     // Else
     //    settings = user_settings
     return settings;
+  }
+
+  json serialize(){
+
+  }
+
+  void deserialize(json serialized){
+
   }
 
 private:

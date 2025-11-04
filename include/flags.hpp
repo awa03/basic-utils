@@ -9,6 +9,8 @@
 #include "join/join_files.hpp"
 #include "structs/_flags.hpp"
 #include "trash/init.hpp"
+#include "trash/file_ops.hpp"
+#include "install/install.hpp"
 
 namespace flags {
 
@@ -84,6 +86,19 @@ inline void handle_flags(Flags& parsed_flags) {
     }
 
     trash::handle_trash(parsed_flags);
+  }
+
+  if(parsed_flags.see_trash){
+    // refactor
+    trash::see_trash(trash::get_default_settings()); 
+  }
+
+  if(parsed_flags.del_trash){
+    trash::del_trash(trash::get_default_settings());
+  }
+
+  if(parsed_flags.install){
+    install::install(parsed_flags);  
   }
 
 }
